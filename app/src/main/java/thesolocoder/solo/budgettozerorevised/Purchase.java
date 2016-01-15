@@ -206,7 +206,7 @@ public class Purchase extends ActionBarActivity {
 
         String entry;
         if (date.getText().toString().equals("Today"))
-            entry = Integer.toString(calendar.getMonth()) + "/" + Integer.toString(calendar.getDayOfMonth()) + "/" + Integer.toString(calendar.getYear()) + "\n";
+            entry = Integer.toString(calendar.getMonth() + 1) + "/" + Integer.toString(calendar.getDayOfMonth()) + "/" + Integer.toString(calendar.getYear()) + "\n";
         else
             entry = date.getText().toString() + "\n";
 

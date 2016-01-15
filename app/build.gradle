@@ -8,8 +8,8 @@ android {
         applicationId "thesolocoder.solo.budgettozerorevised"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 14
+        versionName "3.2"
     }
     buildTypes {
         release {
