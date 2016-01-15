@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#607d8b"
+    android:weightSum="1"
+    android:paddingTop="65dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="387dp"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#6f8a96">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Delete: CAT"
+            android:id="@+id/tv_header_delete"
+            android:layout_weight="0.39"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you sure you want to delete this category?\nThis action can not be undone"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:id="@+id/textView8"
+            android:layout_gravity="center"
+            android:layout_weight="0.39"
+            android:layout_below="@+id/tv_header_delete"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="43dp"
+            android:paddingBottom="50dp"
+            android:paddingLeft="15dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/imageButton_popupDropDown"
+            android:src="@mipmap/ic_arrow_drop_down_circle_white_36dp"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.39"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingRight="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Options"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:id="@+id/textView9"
+            android:layout_gravity="center"
+            android:layout_weight="0.39"
+            android:layout_alignTop="@+id/imageButton_popupDropDown"
+            android:layout_toRightOf="@+id/imageButton_popupDropDown"
+            android:layout_toEndOf="@+id/imageButton_popupDropDown"
+            android:layout_alignBottom="@+id/imageButton_popupDropDown"
+            android:paddingTop="7dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete all purchases in category"
+            android:id="@+id/checkBox_deleteAllRecords"
+            android:layout_below="@+id/imageButton_popupDropDown"
+            android:checked="false"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button_confirmDelete"
+
+            android:text="Yes"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/tv_header_delete"
+            android:layout_alignEnd="@+id/tv_header_delete" />
+        <Button
+            android:id="@+id/button_cancelDelete"
+
+            android:text="No"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
+
+
+
+</ScrollView>

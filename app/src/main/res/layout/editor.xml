@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#607d8b">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#607d8b"
+            android:weightSum="1">>
+            <LinearLayout
+                android:id="@+id/LinearLayout09"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_alignParentBottom="true">
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight=".5"
+                    android:text="Delete Entry"
+                    android:id="@+id/bEditDelete"
+                    />
+
+                <Button
+                    android:id="@+id/bEditRefund"
+                    android:layout_width="fill_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight=".5"
+                    android:text="Refund Purchase">
+                </Button>
+            </LinearLayout>
+
+
+            <TextView
+                android:paddingTop="15dp"
+                android:layout_width="81dp"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:id="@+id/textView2"
+                android:textSize="28sp"
+                android:textColor="#FFFFFF"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="date"
+                android:maxLength="10"
+                android:ems="10"
+                android:id="@+id/etEditScreenDATE"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description:"
+                android:id="@+id/textView3"
+                android:layout_weight="0.06"
+                android:textSize="28sp"
+                android:textColor="#FFFFFF"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/etEditScreenDESCRIPTION"
+                android:layout_gravity="center_horizontal"
+                android:maxLength="25"
+                android:layout_weight="0.06"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost:"
+                android:id="@+id/textView4"
+                android:layout_weight="0.06"
+                android:textSize="28sp"
+                android:textColor="#FFFFFF"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:maxLength="25"
+                android:id="@+id/etEditScreenCOST"
+                android:layout_weight="0.06"
+                android:textColor="#FFFFFF"/>
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_alignParentBottom="true">
+                <Button
+                    android:id="@+id/bEditDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1" android:text="Done">
+                </Button>
+                <Button
+                    android:id="@+id/bEditCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:text="Cancel">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

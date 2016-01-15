@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/s"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:background="#607d8b"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#607d8b">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Budget count direction"
+            android:id="@+id/textView"
+            android:layout_weight="0.03"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Down: $25.00 Remaining"
+            android:id="@+id/rbCountDOWN"
+            android:layout_weight="0.05"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Up: $0.00 Spent"
+            android:id="@+id/rbCountUP"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.03" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Show History:"
+            android:id="@+id/tvShowHistoryHeader"
+            android:layout_weight="0.03"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On"
+            android:id="@+id/rbShowHistoryOn"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Off"
+            android:id="@+id/rbShowHistoryOff"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar3"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Auto Budget Reset Period"
+            android:id="@+id/tvAutoResetHeader"
+            android:layout_weight="0.03"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None / Off"
+            android:id="@+id/rbResetOff"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily"
+            android:id="@+id/rbResetDaily"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekly"
+            android:id="@+id/rbResetWeekly"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biweekly"
+            android:id="@+id/rbResetBiWeekly"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly"
+            android:id="@+id/rbResetMonthly"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Delete History on auto-reset:"
+            android:id="@+id/tvDeleteHistoryHeader"
+            android:layout_weight="0.03"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On"
+            android:id="@+id/rbDeleteHistoryOn"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Off"
+            android:id="@+id/rbDeleteHistoryOff"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Budget Rollover:"
+            android:id="@+id/tvBudgetRollover_HEADER"
+            android:layout_weight="0.03"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Add unspent funds to the next budget"
+            android:id="@+id/tv_rollover_DISCRIPTION"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.03"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On"
+            android:id="@+id/rb_rollover_ON"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Off"
+            android:id="@+id/rb_rollover_OFF"
+            android:layout_weight="0.03"
+            android:checked="false"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:layout_width="262dp"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:id="@+id/bSettingsDone"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.03" />
+        />
+
+
+    </LinearLayout>
+</ScrollView>
