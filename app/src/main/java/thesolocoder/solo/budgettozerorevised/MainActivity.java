@@ -24,7 +24,6 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -44,19 +43,27 @@ public class MainActivity extends AppCompatActivity
     float x1;
     PopupWindow popupwindow_obj;
     int logPosition;
-    private ArrayAdapter<String> mAdapter;
-    private ListView mDrawerList;
-   // private ListView mDrawerList;
-   // private ArrayAdapter<String> mAdapter;
-   // private ActionBarDrawerToggle mDrawerToggle;
-   // private DrawerLayout mDrawerLayout;
-    String[] categoryArray;
     String selectedCategory = "purchaseLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        drawerStuff();
+        getSupportActionBar().setTitle("Viewing: All");
+        setUpVariables();
+        handleFirstStart();
+        loadSettings();
+        registerForContextMenu(log);
+        loadBalanceAndReadLog();
+      //  addDrawerItems();
+    }
+
+    private void drawerStuff()
+    {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,6 +77,7 @@ public class MainActivity extends AppCompatActivity
         });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -77,15 +85,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-        setUpVariables();
-        handleFirstStart();
-        loadSettings();
-        registerForContextMenu(log);
-        loadBalanceAndReadLog();
-      //  addDrawerItems();
     }
+
 
     @Override
     public void onBackPressed() {
@@ -123,18 +124,31 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-       /* if (id == R.id.nav_settings) {
+        if(item.getTitle().toString().equals("Settings"))
+        {
             Intent openSettings = new Intent(MainActivity.this, Settings.class);
             startActivity(openSettings);
-
-        } else if (id == R.id.nav_categorymanager) {
+        }
+        else if(item.getTitle().toString().equals("Category Manager")){
             Intent openCategoryManager = new Intent(MainActivity.this, CategoryManagerView.class);
             startActivity(openCategoryManager);
-        }*/
-
-
+        }
+        else if(item.getTitle().toString().equals("Edit Budget")){
+            Intent openEditBudget = new Intent(MainActivity.this, EditBudget.class);
+            startActivity(openEditBudget);
+        }
+        else {
+            getSupportActionBar().setTitle("Viewing: " + item.getTitle());
+            if(item.getTitle().toString().equals("All")) {
+                readInPurchaseLog("purchaseLog");
+                selectedCategory = "purchaseLog";
+            }
+            else {
+                readInPurchaseLog(item.getTitle().toString());
+                selectedCategory = item.getTitle().toString();
+            }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -188,9 +202,6 @@ public class MainActivity extends AppCompatActivity
         log = (ListView) findViewById(R.id.List);
         log.setOnTouchListener(handleSwipe);
         popupwindow_obj = popupDisplay();
-       // initialize in onCreate()
-      //  mDrawerList = (ListView)findViewById(R.id.upperList);
-      //  mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
     }
 
     @Override
@@ -318,8 +329,8 @@ public class MainActivity extends AppCompatActivity
         updateResetCountdown();
         loadBalanceAndReadLog();
         popupwindow_obj.dismiss();
+
         addDrawerItems();
-       // addDrawerItems();
     }
     private void loadBalanceAndReadLog(){
         loadBalance();
@@ -380,18 +391,24 @@ public class MainActivity extends AppCompatActivity
 
   private void addDrawerItems(){
 
+      deleteOldMenu();
+
+
       NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
       Menu menu = navigationView.getMenu();
 
-
       CategoryManager categoryHandler = new CategoryManager(getApplicationContext());
       ArrayList<String> categorys = categoryHandler.readInCategories();
+      categorys.remove(0);
+      categorys.remove(0);
+      categorys.add(0, "All");
 
       SubMenu categories_menu = menu.addSubMenu(R.id.nav_header_group,R.id.menu_ALL, 0,"Categories");
       for(int i = 0; i < categorys.size(); i++)
         categories_menu.add(categorys.get(i));
 
       SubMenu advanced_menu = menu.addSubMenu(R.id.nav_header_group, R.id.menu_ALL, 0, "Advanced");
+
 
       advanced_menu.add("Category Manager");
       MenuItem advanced_item = advanced_menu.getItem(0);
@@ -402,25 +419,30 @@ public class MainActivity extends AppCompatActivity
       advanced_menu.add("Settings");
       advanced_item = advanced_menu.getItem(2);
       advanced_item.setIcon(R.mipmap.ic_settings_black_24dp);
-
-      //item.setVisible(true);
-      //m.add
-
-      //settings.setVisible(true);
-   /*   CategoryManager categoryHandler = new CategoryManager(getApplicationContext());
-      final ArrayList<String> categorys = categoryHandler.readInCategories();
-      categorys.add(0,"All");
-      categorys.remove(1); // Remove value "Default" from the list
-      categorys.remove(1); // Remove "New Category" option
-
-      categoryArray = new String[categorys.size()];
-      for (int i = 0; i < categorys.size(); i++)
-      {
-          categoryArray[i] = categorys.get(i).toString();
-      }
-      mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categoryArray);
-      mDrawerList.setAdapter(mAdapter);*/
   }
 
+    private void deleteOldMenu() {
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+        MenuItem itemToRemove;
+
+        int counter = 0;
+        while(counter < menu.size()) {
+            itemToRemove = menu.getItem(0);
+            menu.removeItem(itemToRemove.getItemId());
+            counter++;
+        }
+
+       navigationView = (NavigationView) findViewById(R.id.nav_view);
+       menu = navigationView.getMenu();
+
+        counter = 0;
+        while(counter < menu.size()) {
+            itemToRemove = menu.getItem(0);
+            menu.removeItem(itemToRemove.getItemId());
+            counter++;
+        }
+    }
 
 }

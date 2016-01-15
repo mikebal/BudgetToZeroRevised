@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#607d8b"
-    android:weightSum="1"
-    android:paddingTop="65dp"
+    android:paddingTop="50dp"
+
     >
 
     <RelativeLayout
-        android:layout_width="350dp"
+        android:layout_width="fill_parent"
         android:layout_height="387dp"
         android:padding="10dp"
         android:layout_gravity="center_horizontal"
@@ -119,4 +119,4 @@
 
 
 
-</ScrollView>
+</LinearLayout>
