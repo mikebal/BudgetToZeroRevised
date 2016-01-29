@@ -20,8 +20,6 @@ public class FirstStart extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         handleFirstStart();
-
-
     }
     private void handleFirstStart(){
         SharedPreferences savedData;

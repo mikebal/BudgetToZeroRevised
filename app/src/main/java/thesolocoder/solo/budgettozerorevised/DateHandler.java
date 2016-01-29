@@ -1,7 +1,5 @@
 package thesolocoder.solo.budgettozerorevised;
 
-
-
 import android.app.Activity;
 import android.content.Context;
 import java.io.BufferedReader;
@@ -10,10 +8,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Calendar;
 
-
-/**
- * Created by Michael on 2015-05-04.
- */
 public class DateHandler extends Activity {
 
     private static final int DAY = 0;

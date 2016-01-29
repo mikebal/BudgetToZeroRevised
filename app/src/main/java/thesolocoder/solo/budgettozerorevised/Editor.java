@@ -114,7 +114,6 @@ public class Editor extends ActionBarActivity {
         if(sourceCategory.equals("Default"))
             category = "purchaseLog";
 
-
         return logEntry;
     }
 

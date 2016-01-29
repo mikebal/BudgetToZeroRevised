@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-
 import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
 
@@ -27,22 +26,17 @@ public class EditBudget extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editbudget);
         setupVariables();
-
     }
 
-    private void setupVariables(){
-
+    private void setupVariables()
+    {
         editNewBudget = (EditText) findViewById(R.id.editbudget_newBudget);
-
         editHistoryYes = (RadioButton) findViewById(R.id.rbEditHistoryYES);
         editHistoryYes.setOnClickListener(HandleEditHistory);
-
         editHistoryNo = (RadioButton) findViewById(R.id.rbEditHistoryNO);
         editHistoryNo.setOnClickListener(HandleEditHistory);
-
         editDone = (Button) findViewById(R.id.bEditDone);
         editDone.setOnClickListener(HandleEditDone);
-
         editCancel = (Button) findViewById(R.id.bEditCancel);
         editCancel.setOnClickListener(HandleEditCancel);
     }
@@ -64,10 +58,8 @@ public class EditBudget extends ActionBarActivity{
             savedData = getSharedPreferences("savedData", 0);// save data
             SharedPreferences.Editor editor = savedData.edit();
 
-
             if(!editNewBudget.getText().toString().equals("")) {
                 editor.putString("total_budget", editNewBudget.getText().toString());
-
                 DecimalFormat df = new DecimalFormat("0.00");
                 df.setMaximumFractionDigits(2);
 
@@ -78,11 +70,8 @@ public class EditBudget extends ActionBarActivity{
                     editor.putString("budget_spending", df.format(Double.parseDouble(editNewBudget.getText().toString())));
 
                 editor.apply();
-                //loadBalance();
             }
             handleClearHistoryLog();
-
-
             finish();
         }
     };
@@ -98,9 +87,6 @@ public class EditBudget extends ActionBarActivity{
             }
         }
     }
-
-
-
     View.OnClickListener HandleEditCancel = new View.OnClickListener() {
         public void onClick(View v) {
             finish();
