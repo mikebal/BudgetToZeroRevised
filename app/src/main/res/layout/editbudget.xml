@@ -13,12 +13,12 @@
             android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#607d8b"
-            android:weightSum="1">>
+            android:weightSum="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="New Budget:"
+                android:text="@string/new_budget"
                 android:id="@+id/textView5"
                 android:paddingTop="40dp"
                 android:paddingLeft="10dp"
@@ -31,7 +31,7 @@
                 android:ems="10"
                 android:maxLength="25"
                 android:id="@+id/editbudget_newBudget"
-                android:hint="(Optional)"
+                android:hint="@string/optional_hint"
                 android:textColorHint="#9E9E9E"
                 android:textColor="#FFFFFF"
                 android:padding="10dp"/>
@@ -40,14 +40,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Clear History Log:"
+                android:text="@string/optional_clearLog"
                 android:textColor="#FFFFFF"
                 android:id="@+id/tvEditHistory" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="@string/yes"
                 android:textColor="#FFFFFF"
                 android:id="@+id/rbEditHistoryYES"
                 android:checked="false" />
@@ -55,7 +55,7 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No"
+                android:text="@string/no"
                 android:textColor="#FFFFFF"
                 android:id="@+id/rbEditHistoryNO"
                 android:checked="true" />
@@ -71,17 +71,17 @@
                     android:id="@+id/bEditDone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:text="Done">
+                    android:layout_weight="1"
+                    android:text="@string/done">
                 </Button>
                 <Button
                     android:id="@+id/bEditCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Cancel">
+                    android:text="@string/cancel">
                 </Button>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Budget count direction"
+            android:text="@string/budgetcountdirection"
             android:id="@+id/textView"
             android:layout_weight="0.03"
             android:textColor="#FFFFFF"/>
@@ -23,7 +23,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Down: $25.00 Remaining"
+            android:text="@string/countDirectionDown"
             android:id="@+id/rbCountDOWN"
             android:layout_weight="0.05"
             android:checked="false"
@@ -32,7 +32,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Up: $0.00 Spent"
+            android:text="@string/countDirectionUP"
             android:id="@+id/rbCountUP"
             android:layout_weight="0.03"
             android:checked="false"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Show History:"
+            android:text="@string/ShowHistory"
             android:id="@+id/tvShowHistoryHeader"
             android:layout_weight="0.03"
             android:textColor="#FFFFFF"/>
@@ -59,7 +59,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="On"
+            android:text="@string/on"
             android:id="@+id/rbShowHistoryOn"
             android:layout_weight="0.03"
             android:checked="false"
@@ -68,7 +68,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Off"
+            android:text="@string/off"
             android:id="@+id/rbShowHistoryOff"
             android:layout_weight="0.03"
             android:checked="false"
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Auto Budget Reset Period"
+            android:text="@string/autoBudgetResetPeriod"
             android:id="@+id/tvAutoResetHeader"
             android:layout_weight="0.03"
             android:textColor="#FFFFFF"/>
@@ -94,7 +94,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="None / Off"
+            android:text="@string/autoBudgetResetPeriod_NONE"
             android:id="@+id/rbResetOff"
             android:layout_weight="0.03"
             android:checked="false"
@@ -103,7 +103,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daily"
+            android:text="@string/autoBudgetResetPeriod_DAYLY"
             android:id="@+id/rbResetDaily"
             android:layout_weight="0.03"
             android:checked="false"
@@ -112,7 +112,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weekly"
+            android:text="@string/autoBudgetResetPeriod_WEEKLY"
             android:id="@+id/rbResetWeekly"
             android:layout_weight="0.03"
             android:checked="false"
@@ -121,7 +121,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Biweekly"
+            android:text="@string/autoBudgetResetPeriod_BIWEEKLY"
             android:id="@+id/rbResetBiWeekly"
             android:layout_weight="0.03"
             android:checked="false"
@@ -130,7 +130,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monthly"
+            android:text="@string/autoBudgetResetPeriod_MONTHLY"
             android:id="@+id/rbResetMonthly"
             android:layout_weight="0.03"
             android:checked="false"
@@ -141,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Delete History on auto-reset:"
+            android:text="@string/deleteHistory"
             android:id="@+id/tvDeleteHistoryHeader"
             android:layout_weight="0.03"
             android:textColor="#FFFFFF"/>
@@ -149,7 +149,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="On"
+            android:text="@string/on"
             android:id="@+id/rbDeleteHistoryOn"
             android:layout_weight="0.03"
             android:checked="false"
@@ -158,7 +158,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Off"
+            android:text="@string/off"
             android:id="@+id/rbDeleteHistoryOff"
             android:layout_weight="0.03"
             android:checked="false"
@@ -168,7 +168,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Budget Rollover:"
+            android:text="@string/budgetrollover"
             android:id="@+id/tvBudgetRollover_HEADER"
             android:layout_weight="0.03"
             android:textColor="#FFFFFF" />
@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Add unspent funds to the next budget"
+            android:text="@string/rolloverDiscription"
             android:id="@+id/tv_rollover_DISCRIPTION"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.03"
@@ -186,7 +186,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="On"
+            android:text="@string/on"
             android:id="@+id/rb_rollover_ON"
             android:layout_weight="0.03"
             android:checked="false"
@@ -195,7 +195,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Off"
+            android:text="@string/off"
             android:id="@+id/rb_rollover_OFF"
             android:layout_weight="0.03"
             android:checked="false"
@@ -204,7 +204,7 @@
         <Button
             android:layout_width="262dp"
             android:layout_height="wrap_content"
-            android:text="Done"
+            android:text="@string/done"
             android:id="@+id/bSettingsDone"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.03" />

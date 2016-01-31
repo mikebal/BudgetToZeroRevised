@@ -15,17 +15,15 @@
             android:id="@+id/menuButtonEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="@string/menu_edit"
             android:drawableLeft="@mipmap/ic_mode_edit_black_24dp"
             android:background="?android:attr/selectableItemBackground"/>
-
-
 
         <Button
             android:id="@+id/menuButtonDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"
+            android:text="@string/menu_delete"
             android:drawableLeft="@mipmap/ic_delete_black_24dp"
             android:background="?android:attr/selectableItemBackground"/>
 
@@ -33,7 +31,7 @@
             android:id="@+id/menuButtonRefund"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refund"
+            android:text="@string/menu_refund"
             android:drawableLeft="@mipmap/ic_history_black_24dp"
             android:background="?android:attr/selectableItemBackground"/>
 

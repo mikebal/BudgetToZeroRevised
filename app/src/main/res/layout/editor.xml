@@ -24,7 +24,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="55dp"
                     android:layout_weight=".5"
-                    android:text="Delete Entry"
+                    android:text="@string/delete_entry"
                     android:id="@+id/bEditDelete"
                     />
 
@@ -33,7 +33,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="55dp"
                     android:layout_weight=".5"
-                    android:text="Refund Purchase">
+                    android:text="@string/refund_purchase">
                 </Button>
             </LinearLayout>
 
@@ -42,7 +42,7 @@
                 android:paddingTop="15dp"
                 android:layout_width="81dp"
                 android:layout_height="wrap_content"
-                android:text="Date:"
+                android:text="@string/date"
                 android:id="@+id/textView2"
                 android:textSize="28sp"
                 android:textColor="#FFFFFF"/>
@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description:"
+                android:text="@string/description"
                 android:id="@+id/textView3"
                 android:layout_weight="0.06"
                 android:textSize="28sp"
@@ -76,7 +76,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cost:"
+                android:text="@string/cost"
                 android:id="@+id/textView4"
                 android:layout_weight="0.06"
                 android:textSize="28sp"
@@ -100,14 +100,15 @@
                     android:id="@+id/bEditDone"
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
-                    android:layout_weight="1" android:text="Done">
+                    android:layout_weight="1"
+                    android:text="@string/done">
                 </Button>
                 <Button
                     android:id="@+id/bEditCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
                     android:layout_weight="1"
-                    android:text="Cancel">
+                    android:text="@string/cancel">
                 </Button>
             </LinearLayout>
         </LinearLayout>

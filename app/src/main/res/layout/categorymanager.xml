@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:background="#607d8b">
 
-
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -29,7 +27,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rename Category"
+            android:text="@string/rename_category"
             android:id="@+id/button_renameCategory"
             android:layout_gravity="right"
             android:visibility="gone" />
@@ -58,7 +56,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Category"
+            android:text="@string/add_category"
             android:layout_gravity="right"
             android:id="@+id/button_addCategory"
             android:visibility="gone" />
