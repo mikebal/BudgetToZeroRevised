@@ -4,16 +4,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
 import java.text.DecimalFormat;
 
-
-/**
- * Created by Michael on 2/12/2015.
- */
 public class Settings extends ActionBarActivity {
 
     RadioButton countDirDown;
@@ -31,7 +25,6 @@ public class Settings extends ActionBarActivity {
     TextView    rollover_disc;
     RadioButton deleteHistoryON;
     RadioButton deleteHistoryOFF;
-    Button done;
     int resetVariable     = -1;
     int loadedResetPeriod = -1;
     boolean originalCountDirectionUp;
@@ -45,7 +38,6 @@ public class Settings extends ActionBarActivity {
         setVariableId();
         load_settings();
         setButtonOnClicks();
-
     }
 
     private void setVariableId() {
@@ -59,20 +51,15 @@ public class Settings extends ActionBarActivity {
         resetWeekly = (RadioButton) findViewById(R.id.rbResetWeekly);
         resetBiWeekly = (RadioButton) findViewById(R.id.rbResetBiWeekly);
         resetMonthly = (RadioButton) findViewById(R.id.rbResetMonthly);
-        done = (Button) findViewById(R.id.bSettingsDone);
-
         rollover_header = (TextView) findViewById(R.id.tvBudgetRollover_HEADER);
         rollover_disc   = (TextView) findViewById(R.id.tv_rollover_DISCRIPTION);
         rolloverON = (RadioButton) findViewById(R.id.rb_rollover_ON);
         rolloverOFF = (RadioButton) findViewById(R.id.rb_rollover_OFF);
-
         deleteHistoryON = (RadioButton) findViewById(R.id.rbDeleteHistoryOn);
         deleteHistoryOFF = (RadioButton) findViewById(R.id.rbDeleteHistoryOff);
     }
 
     private void setButtonOnClicks() {
-        countDirDown.setOnClickListener(handle_countDir);
-        countDirUp.setOnClickListener(handle_countDir);
         showHistoryOFF.setOnClickListener(handle_showHistory);
         showHistoryON.setOnClickListener(handle_showHistory);
         resetOFF.setOnClickListener(handle_autoBudget);
@@ -80,24 +67,20 @@ public class Settings extends ActionBarActivity {
         resetWeekly.setOnClickListener(handle_autoBudget);
         resetBiWeekly.setOnClickListener(handle_autoBudget);
         resetMonthly.setOnClickListener(handle_autoBudget);
-        done.setOnClickListener(handle_SaveSettings);
-
         rolloverON.setOnClickListener(handle_rollover);
         rolloverOFF.setOnClickListener(handle_rollover);
-
         deleteHistoryON.setOnClickListener(handle_deleteHistory);
         deleteHistoryOFF.setOnClickListener(handle_deleteHistory);
     }
 
-    View.OnClickListener handle_countDir = new View.OnClickListener() {
-        public void onClick(View v) {
+    public void handle_countDir(View v){
             int clicked = v.getId();
             if (clicked == R.id.rbCountDOWN)
                 countDirUp.setChecked(false);
             else
                 countDirDown.setChecked(false);
         }
-    };
+
     View.OnClickListener handle_showHistory = new View.OnClickListener() {
         public void onClick(View v) {
             int clicked = v.getId();
@@ -150,8 +133,7 @@ public class Settings extends ActionBarActivity {
             }
         }
     };
-    View.OnClickListener handle_SaveSettings = new View.OnClickListener() {
-        public void onClick(View v) {
+    public void handle_SaveSettings(View v){
 
             SharedPreferences savedData;
             savedData = getSharedPreferences("savedData", 0);// save data
@@ -193,7 +175,6 @@ public class Settings extends ActionBarActivity {
             editor.apply();
             finish();
         }
-    };
 
     View.OnClickListener handle_rollover = new View.OnClickListener() {
         public void onClick(View v) {
@@ -250,7 +231,6 @@ public class Settings extends ActionBarActivity {
         loadedResetPeriod = var;
     }
 
-
     private void flipBudget() {
         SharedPreferences savedData;
         savedData = getSharedPreferences("savedData", 0);// save data
@@ -288,7 +268,6 @@ public class Settings extends ActionBarActivity {
         rolloverOFF.setVisibility(View.GONE);
     }
 
-
     private void show_rollover()
     {
         rollover_header.setVisibility(View.VISIBLE);
@@ -306,5 +285,4 @@ public class Settings extends ActionBarActivity {
                 deleteHistoryON.setChecked(false);
         }
     };
-
 }

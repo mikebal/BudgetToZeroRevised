@@ -25,6 +25,7 @@
                     android:layout_height="55dp"
                     android:layout_weight=".5"
                     android:text="@string/delete_entry"
+                    android:onClick="handleDeleteEntry"
                     android:id="@+id/bEditDelete"
                     />
 
@@ -33,6 +34,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="55dp"
                     android:layout_weight=".5"
+                    android:onClick="handleRefundClicked"
                     android:text="@string/refund_purchase">
                 </Button>
             </LinearLayout>
@@ -118,6 +120,7 @@
                     android:id="@+id/bEditDone"
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
+                    android:onClick="handleDoneClicked"
                     android:layout_weight="1"
                     android:text="@string/done">
                 </Button>
@@ -126,6 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
                     android:layout_weight="1"
+                    android:onClick="handleCancelClicked"
                     android:text="@string/cancel">
                 </Button>
             </LinearLayout>

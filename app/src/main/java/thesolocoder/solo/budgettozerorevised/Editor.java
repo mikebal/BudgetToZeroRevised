@@ -7,10 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -20,10 +18,6 @@ public class Editor extends ActionBarActivity {
     TextView date;
     TextView description;
     TextView cost;
-    Button buttonDeleteEntry;
-    Button buttonRefund;
-    Button buttonDone;
-    Button buttonCancel;
     String category;
     int position;
     String sourceCategory;
@@ -31,14 +25,13 @@ public class Editor extends ActionBarActivity {
     ListObject originalItem;
     Spinner categorySpinner;
     String categorySpinnerSelction;
-    boolean inital = true;
+    boolean initial = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editor);
         setupVariables();
-        setupOnClickListers();
         loadPurchaseLog();
         populatespinner();
     }
@@ -47,46 +40,28 @@ public class Editor extends ActionBarActivity {
         date = (TextView) findViewById(R.id.etEditScreenDATE);
         description = (TextView) findViewById(R.id.etEditScreenDESCRIPTION);
         cost = (TextView) findViewById(R.id.etEditScreenCOST);
-        buttonDeleteEntry = (Button) findViewById(R.id.bEditDelete);
-        buttonRefund = (Button) findViewById(R.id.bEditRefund);
-        buttonCancel = (Button) findViewById(R.id.bEditCancel);
-        buttonDone = (Button) findViewById(R.id.bEditDone);
         categorySpinner = (Spinner) findViewById(R.id.editCategorySpinner);
     }
 
-    private void setupOnClickListers() {
-        buttonDeleteEntry.setOnClickListener(handleDeleteEntry);
-        buttonRefund.setOnClickListener(handleRefundClicked);
-        buttonCancel.setOnClickListener(handleCancelClicked);
-        buttonDone.setOnClickListener(handleDoneClicked);
-    }
-
-    View.OnClickListener handleDeleteEntry = new View.OnClickListener() {
-        public void onClick(View v) {
+    public void handleDeleteEntry(View v){
             deleteItem(false);
             finish();
         }
-    };
-    View.OnClickListener handleRefundClicked = new View.OnClickListener() {
-        public void onClick(View v) {
+
+    public void handleRefundClicked(View v){
             deleteItem(true);
             finish();
         }
-    };
-    View.OnClickListener handleCancelClicked = new View.OnClickListener() {
-        public void onClick(View v) {
+
+    public void handleCancelClicked(View v){
             finish();
         }
-    };
-    View.OnClickListener handleDoneClicked = new View.OnClickListener() {
-        public void onClick(View v) {
-            if (changesMade()) {
-                // createNewObject();
-                handleEdit();
-            }
+
+    public void handleDoneClicked(View v){
+            if (changesMade())
+               handleEdit();
             finish();
         }
-    };
 
     private Boolean changesMade() {
         String[] logEntry = getLogEntry();
@@ -131,7 +106,7 @@ public class Editor extends ActionBarActivity {
     }
 
     private void deleteItem(boolean isRefund) {
-        ArrayList<ListObject> logFiles;// = new ArrayList<ListObject>();
+        ArrayList<ListObject> logFiles;
         PurchaseLogManager logHandler = new PurchaseLogManager(getApplicationContext());
         logFiles = logHandler.readInPurchaseLog("purchaseLog.txt", false);
 
@@ -140,24 +115,34 @@ public class Editor extends ActionBarActivity {
     }
 
     private void handleEdit() {
-        ArrayList<ListObject> logFiles;// = new ArrayList<ListObject>();
-        PurchaseLogManager logHandler = new PurchaseLogManager(getApplicationContext());
-        logFiles = logHandler.readInPurchaseLog(sourceCategory + ".txt", false);
+        if(!ifCategoryChangeHappened()) { // if the category was changed then run edit procedure of ifCategoryChangeHappened
+            ListObject editedItem = createNewObject();
+            ArrayList<ListObject> logFiles;// = new ArrayList<ListObject>();
+            PurchaseLogManager logHandler = new PurchaseLogManager(getApplicationContext());
+            logFiles = logHandler.readInPurchaseLog(sourceCategory + ".txt", false);
 
-        ListObject editedItem = createNewObject();//new ListObject(date.getText().toString(), description.getText().toString(), cost.getText().toString(), category);
+            EditManager editHandler = new EditManager(getApplicationContext(), logFiles);
+            double priceDifference = Double.valueOf(cost.getText().toString()) - originalCost;
+            editHandler.handleEdit(sourceCategory, editedItem, originalItem, priceDifference, position);
+        }
+    }
+
+    private boolean ifCategoryChangeHappened(){
+        String logEntry;
+        boolean categoryChanged = false;
+
         if(!sourceCategory.equals(categorySpinnerSelction))
         {
             deleteItem(true);
             BalanceManager balanceManager = new BalanceManager();
             balanceManager.subtract_purchase(cost.getText().toString(), getApplicationContext());
-            create_log_entry("purchaseLog.txt", categorySpinnerSelction);
+            logEntry = create_log_entry();
+            saveLog(logEntry, "purchaseLog.txt");
             if(!categorySpinner.equals("Default"))
-                create_log_entry(categorySpinnerSelction + ".txt", categorySpinnerSelction);
-            finish();
+                saveLog(logEntry, categorySpinnerSelction + ".txt");
+          categoryChanged = true;
         }
-        EditManager editHandler = new EditManager(getApplicationContext(), logFiles);
-        double priceDifference = Double.valueOf(cost.getText().toString()) - originalCost;
-        editHandler.handleEdit(sourceCategory, editedItem, originalItem, priceDifference, position);
+        return categoryChanged;
     }
 
     private ListObject createNewObject() {
@@ -173,28 +158,26 @@ public class Editor extends ActionBarActivity {
 
     private void populatespinner() {
         CategoryManager categoryManager = new CategoryManager(getApplicationContext());
-        ArrayList<String> categorys = categoryManager.readInCategories();
-        categorys.remove(1); // Remove category "New Category"
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categorys);
+        ArrayList<String> categories = categoryManager.readInCategories();
+        categories.remove(1); // Remove category "New Category"
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         categorySpinner.setAdapter(adapter);
-        final int index = getIndexOfExistingCategory(categorys);
+        final int index = getIndexOfExistingCategory(categories);
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos,
-                                       long id) {
-                // TODO Auto-generated method stub
-                if (index != -1 && inital) {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                if (index != -1 && initial) {
                     parent.setSelection(index);
-                    inital = false;
+                    initial = false;
                 }
                else
-                parent.setSelection(pos);
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-                ((TextView) parent.getChildAt(0)).setTextSize(16);
-                categorySpinnerSelction = ((TextView) parent.getChildAt(0)).getText().toString();
-            }
+                 parent.setSelection(pos);
 
+               ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+               ((TextView) parent.getChildAt(0)).setTextSize(16);
+               categorySpinnerSelction = ((TextView) parent.getChildAt(0)).getText().toString();
+            }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
@@ -202,24 +185,22 @@ public class Editor extends ActionBarActivity {
         });
 
     }
-    private int getIndexOfExistingCategory(ArrayList<String> categorys){
+    private int getIndexOfExistingCategory(ArrayList<String> categories){
         int index = -1;
-
-        for(int i = 0; i < categorys.size(); i++)
+        for(int i = 0; i < categories.size(); i++)
         {
-            if(categorys.get(i).equals(originalItem.getCategory())) {
+            if(categories.get(i).equals(originalItem.getCategory())) {
                 index = i;
                 break;
             }
         }
         return index;
     }
-    private void create_log_entry(String fileName, String category) {
+    private String create_log_entry() {
 
         String entry;
         if (date.getText().toString().equals(""))
             entry = "xx/xx/xxxx\n";
-//            entry = Integer.toString(calendar.getMonth() + 1) + "/" + Integer.toString(calendar.getDayOfMonth()) + "/" + Integer.toString(calendar.getYear()) + "\n";
         else
             entry = date.getText().toString() + "\n";
 
@@ -228,17 +209,15 @@ public class Editor extends ActionBarActivity {
         else
             entry += description.getText().toString() + "\n";
         if (cost.getText().toString().equals(""))
-            return;
+            return "";
         else {
             DecimalFormat df = new DecimalFormat("0.00");
             df.setMaximumFractionDigits(2);
             double dollarAmount = Double.parseDouble(cost.getText().toString());
-
             entry += String.valueOf(df.format(dollarAmount)) + "\n";
-
             entry += categorySpinnerSelction + "\n";
         }
-        saveLog(entry, fileName);
+        return entry;
     }
 
     public void saveLog(String newEntry, String fileName) {

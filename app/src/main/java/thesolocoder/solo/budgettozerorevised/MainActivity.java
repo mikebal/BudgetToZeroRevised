@@ -312,9 +312,11 @@ public class MainActivity extends AppCompatActivity
 
     private void updateResetCountdown()
     {
-        RuntimeManager resetCountdown = new RuntimeManager();
-        String result = resetCountdown.getAutoResetRemaning(getApplicationContext());
-        budgetRuntime.setText(result);
+        if(budgetRuntime.getVisibility() == View.VISIBLE) {
+            RuntimeManager resetCountdown = new RuntimeManager();
+            String result = resetCountdown.getAutoResetRemaning(getApplicationContext());
+            budgetRuntime.setText(result);
+        }
     }
 
     private void menuConfirmation(String header, String message, final boolean ifYesSelected)

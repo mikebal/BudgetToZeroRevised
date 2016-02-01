@@ -1,7 +1,6 @@
 package thesolocoder.solo.budgettozerorevised;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -175,33 +174,12 @@ public class Purchase extends ActionBarActivity {
     private boolean validFileName(String fileName) {
         CategoryManager categoryManager = new CategoryManager(getApplicationContext());
         return categoryManager.isValidCategoryName(fileName);
-
     }
 
     private void subtract_purchase() {
             BalanceManager balanceManager = new BalanceManager();
             balanceManager.subtract_purchase(purchase_total.getText().toString(), getApplicationContext());
-    /*    if (purchase_total.getText().toString().equals(""))
-            return;
-
-        double balance;
-        SharedPreferences savedData;
-        savedData = getSharedPreferences("savedData", 0);// save data
-        SharedPreferences.Editor editor = savedData.edit();
-
-        balance = Double.parseDouble(savedData.getString("budget_spending", "00.00"));
-
-        DecimalFormat df = new DecimalFormat("0.00");
-        df.setMaximumFractionDigits(2);
-
-        if (savedData.getBoolean("count_direction_up", false))
-            balance += Double.parseDouble(purchase_total.getText().toString());
-        else
-            balance -= Double.parseDouble(purchase_total.getText().toString());
-
-        editor.putString("budget_spending", String.valueOf(df.format(balance)));
-        editor.apply();*/
-    }
+     }
 
     private void create_log_entry(String fileName, String category) {
 
@@ -269,7 +247,6 @@ public class Purchase extends ActionBarActivity {
         }
 
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
     };
 }

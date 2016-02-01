@@ -4,8 +4,7 @@
     android:id="@+id/s"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:background="#607d8b"
-    >
+    android:background="#607d8b">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/countDirectionDown"
+            android:onClick="handle_countDir"
             android:id="@+id/rbCountDOWN"
             android:layout_weight="0.05"
             android:checked="false"
@@ -32,6 +32,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="handle_countDir"
             android:text="@string/countDirectionUP"
             android:id="@+id/rbCountUP"
             android:layout_weight="0.03"
@@ -205,11 +206,10 @@
             android:layout_width="262dp"
             android:layout_height="wrap_content"
             android:text="@string/done"
+            android:onClick="handle_SaveSettings"
             android:id="@+id/bSettingsDone"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.03" />
         />
-
-
     </LinearLayout>
 </ScrollView>
