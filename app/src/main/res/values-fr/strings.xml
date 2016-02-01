@@ -53,4 +53,5 @@
     <string name="category_name">Cat. Nom:</string>
     <string name="hint_catName">Nourriture</string>
     <string name="total$">Total $:</string>
+    <string name="menu_category">Catégorie:</string>
 </resources>

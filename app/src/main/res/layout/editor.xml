@@ -91,6 +91,24 @@
                 android:id="@+id/etEditScreenCOST"
                 android:layout_weight="0.06"
                 android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_category"
+                android:textSize="28sp"
+                android:textColor="#FFFFFF"
+                android:id="@+id/textView6" />
+
+            <Spinner
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editCategorySpinner"
+                android:paddingBottom="10dp"
+                />
+
             <LinearLayout
                 android:id="@+id/LinearLayout02"
                 android:layout_height="wrap_content"

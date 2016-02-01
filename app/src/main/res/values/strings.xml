@@ -41,14 +41,16 @@
     <string name="optional_clearLog">Clear History Log:</string>
     <string name="cancel">Cancel</string>
     <string name="delete_entry">Delete Entry</string>
-    <string name="refund_purchase"></string>
+    <string name="refund_purchase">Refund Purchase</string>
     <string name="date">Date:</string>
     <string name="description">Description:</string>
     <string name="cost">Cost:</string>
     <string name="menu_edit">Edit</string>
     <string name="menu_delete">Delete</string>
+    <string name="menu_refund">Refund</string>
     <string name="today">Today</string>
     <string name="category_name">Cat. Name:</string>
     <string name="hint_catName">Food</string>
     <string name="total$">Total $:</string>
+    <string name="menu_category">Category:</string>
 </resources>

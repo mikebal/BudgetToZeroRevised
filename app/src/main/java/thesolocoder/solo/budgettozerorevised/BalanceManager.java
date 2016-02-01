@@ -130,4 +130,29 @@ public class BalanceManager extends Activity {
         editor.putBoolean("requestBudgetFlip", false);
         editor.apply();
     }
+
+    public void subtract_purchase(String purchase_total, Context context) {
+
+        if (purchase_total.equals(""))
+            return;
+
+        double balance;
+        SharedPreferences savedData;
+        savedData = context.getSharedPreferences("savedData", 0);// save data
+        SharedPreferences.Editor editor = savedData.edit();
+
+        balance = Double.parseDouble(savedData.getString("budget_spending", "00.00"));
+
+        DecimalFormat df = new DecimalFormat("0.00");
+        df.setMaximumFractionDigits(2);
+
+        if (savedData.getBoolean("count_direction_up", false))
+            balance += Double.parseDouble(purchase_total);
+        else
+            balance -= Double.parseDouble(purchase_total);
+
+        editor.putString("budget_spending", String.valueOf(df.format(balance)));
+        editor.apply();
+    }
+
 }

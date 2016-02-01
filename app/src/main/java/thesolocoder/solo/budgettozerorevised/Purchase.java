@@ -179,8 +179,9 @@ public class Purchase extends ActionBarActivity {
     }
 
     private void subtract_purchase() {
-
-        if (purchase_total.getText().toString().equals(""))
+            BalanceManager balanceManager = new BalanceManager();
+            balanceManager.subtract_purchase(purchase_total.getText().toString(), getApplicationContext());
+    /*    if (purchase_total.getText().toString().equals(""))
             return;
 
         double balance;
@@ -199,7 +200,7 @@ public class Purchase extends ActionBarActivity {
             balance -= Double.parseDouble(purchase_total.getText().toString());
 
         editor.putString("budget_spending", String.valueOf(df.format(balance)));
-        editor.apply();
+        editor.apply();*/
     }
 
     private void create_log_entry(String fileName, String category) {
