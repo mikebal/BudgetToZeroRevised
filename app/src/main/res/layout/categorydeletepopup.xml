@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/deleteHistory"
+            android:text="@string/are_you_sure_message"
             android:textSize="20dp"
             android:textColor="#ffffff"
             android:id="@+id/textView8"
@@ -84,16 +84,14 @@
             android:text="@string/yes"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/tv_header_delete"
-            android:layout_alignEnd="@+id/tv_header_delete" />
+            android:layout_alignParentBottom="true" />
         <Button
             android:id="@+id/button_cancelDelete"
 
@@ -101,7 +99,7 @@
             android:textColor="#FFFFFF"
             android:textSize="30sp"
 
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape"
             android:shadowColor="#A8A8A8"
